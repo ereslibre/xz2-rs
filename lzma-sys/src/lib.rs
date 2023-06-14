@@ -1,15 +1,16 @@
 #![allow(bad_style)]
 #![doc(html_root_url = "https://docs.rs/lzma-sys/0.1")]
 
-use libc::{c_char, c_uchar, c_void, size_t};
+#![feature(c_size_t)]
+use core::ffi::{c_char, c_uchar, c_void, c_size_t as size_t};
 use std::u64;
 
 #[cfg(target_env = "msvc")]
 #[doc(hidden)]
-pub type __enum_ty = libc::c_int;
+pub type __enum_ty = core::ffi::c_int;
 #[cfg(not(target_env = "msvc"))]
 #[doc(hidden)]
-pub type __enum_ty = libc::c_uint;
+pub type __enum_ty = core::ffi::c_uint;
 pub type lzma_bool = c_uchar;
 pub type lzma_ret = __enum_ty;
 pub type lzma_action = __enum_ty;
